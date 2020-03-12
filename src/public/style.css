@@ -5988,11 +5988,11 @@ header {
     margin: 0; }
   .btn-si.dis {
     position: absolute;
+    z-index: -2;
     top: 0;
     left: 0;
     right: unset;
     transition: width 0.8s ease-out 0.05s;
-    z-index: -2;
     width: 100vw; }
 
 .btn-so {
@@ -6020,9 +6020,9 @@ header {
     margin: 0; }
   .btn-so.dis {
     position: absolute;
+    z-index: -2;
     top: 0;
     left: unset;
     right: 0;
     transition: width 0.8s ease-out 0.05s;
-    z-index: -2;
     width: 100vw; }
