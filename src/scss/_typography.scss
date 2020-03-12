@@ -1,0 +1,5 @@
+@mixin title($weight) {
+    font-family: 'Lato';
+    font-size: 32px;
+    font-weight: $weight;
+}
