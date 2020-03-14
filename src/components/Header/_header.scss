@@ -13,7 +13,7 @@ header{
 
 
 @mixin link-bg ($b-radius,$color,$bg-color) {
-    @include title(700);
+    @include header(700);
     display: inline-flex;
     justify-content: center;
     align-items: center;

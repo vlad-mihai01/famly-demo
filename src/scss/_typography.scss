@@ -1,5 +1,11 @@
-@mixin title($weight) {
+@mixin header($weight) {
     font-family: 'Lato';
     font-size: 32px;
+    font-weight: $weight;
+}
+
+@mixin title($weight) {
+    font-family: 'Lato';
+    font-size: 24px;
     font-weight: $weight;
 }

@@ -28,9 +28,9 @@ class ListSignIn extends Component<{},IState> {
         }
 
         return (
-            <div>
+            <>
                 <ChildrenList children={sortedChildren}/>
-            </div>
+            </>
         )
     }
 

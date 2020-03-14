@@ -23,7 +23,6 @@ class App extends Component<TProps> {
             <>
                 <Background />
                 <Header />
-                <div className={`container-fluid`}>
                     <Switch>
                         <Route exact path='/'>
                             <Redirect to='/signin'/>
@@ -35,9 +34,6 @@ class App extends Component<TProps> {
                             <ListSignOut />
                         </Route>
                     </Switch>
-
-
-                </div>
             </>
         );
     }
