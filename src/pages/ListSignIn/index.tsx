@@ -23,13 +23,13 @@ class ListSignIn extends Component<{},IState> {
         const {sortedChildren} = this.state
         if(!sortedChildren){
             return(
-                <div>Loading</div>
+                <div></div>
             )
         }
 
         return (
             <>
-                <ChildrenList children={sortedChildren}/>
+                <ChildrenList theme='light' children={sortedChildren}/>
             </>
         )
     }
@@ -42,7 +42,7 @@ class ListSignIn extends Component<{},IState> {
     private sortChildren = (children:[]) => {
         const sortedChildren:any = []
         children.map((child:any) => {
-            if(!child.checkedIn){
+            if(!child.checkedIn && child.gender === 2){
                 sortedChildren.push(child)
             }
         })

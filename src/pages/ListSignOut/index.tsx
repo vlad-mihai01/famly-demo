@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 
 import {getChildren} from '../../api'
+import ChildrenList from '../../components/ChildrenList'
 
 interface IState {
     sortedChildren? : any 
@@ -17,8 +18,17 @@ class ListSignOut extends Component<{},IState> {
     }
 
     public render(){
-        return(
-            <div>List Sign Out</div>
+        const {sortedChildren} = this.state
+        if(!sortedChildren){
+            return(
+                <div></div>
+            )
+        }
+
+        return (
+            <>
+                <ChildrenList theme='dark' children={sortedChildren}/>
+            </>
         )
     }
 
@@ -30,12 +40,11 @@ class ListSignOut extends Component<{},IState> {
     private sortChildren = (children:[]) => {
         const sortedChildren:any = []
         children.map((child:any) => {
-            if(child.checkedIn){
+            if(!child.checkedIn && child.gender === 1){
                 sortedChildren.push(child)
             }
         })
 
-        console.log('SC', sortedChildren);
 
         this.setState({sortedChildren})
         

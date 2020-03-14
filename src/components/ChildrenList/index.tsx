@@ -7,42 +7,49 @@ import { createArrayWithSubarrays } from '../../utils/array';
 
 interface IOwnProps {
     children: Array<any>
+    theme: 'light' | 'dark'
 }
 
 
 type TProps = IOwnProps
 
 
-const ChildrenList: React.FunctionComponent<TProps> = ({ children }) => {
+const ChildrenList: React.FunctionComponent<TProps> = ({ children, theme }) => {
 
     const pages = () => {
         const pages = createArrayWithSubarrays(children, 10)
         return pages.map((page) => {
             return (
-                <div>
-                    {page.map((child: any) => {
-                        return (
-                            <ChildCard firstName={child.name.firstName} imgUrl={child.image.large}/>
-                        )
-                    })}
+                <div className='swiper-page'>
+                    <div className='sw-p-container'>
+                        {page.map((child: any) => {
+                            return (
+                                <ChildCard firstName={child.name.firstName} imgUrl={child.image.large} />
+                            )
+                        })}
+                    </div>
                 </div>
             )
 
         })
     }
 
+    
     const swipeParams = {
         pagination: {
             el: '.swiper-pagination',
-            clickable: true
+            clickable: true,
+            renderBullet: function (index:number ,className:string) {
+                return `<span class='${theme} ${className}'> </span>`
+              }
         }
     }
     return (
-        <div className='test'>
-            <Swiper {...swipeParams}>
-                {pages()}
-            </Swiper>
-        </div>
+
+        <Swiper {...swipeParams}>
+            {pages()}
+        </Swiper>
+
     )
 }
 

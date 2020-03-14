@@ -4,7 +4,7 @@
   "description": "Famly demo ",
   "main": "index.js",
   "scripts": {
-    "build:css": "node-sass src/scss/style.scss -o src/ ",
+    "build:css": "node-sass src/style.scss -o src/public ",
     "watch:css": "node-sass src/style.scss -o src/public -w -r",
     "start:js": "webpack-dev-server --mode development --hot",
     "start": "npm-run-all -p watch:css start:js",
