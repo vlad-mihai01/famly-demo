@@ -12,7 +12,7 @@ header{
 }
 
 
-@mixin link-bg ($b-radius,$color,$bg-color) {
+@mixin link-bg ($b-radius,$color,$bg-color,$left,$right) {
     @include header(700);
     display: inline-flex;
     justify-content: center;
@@ -23,6 +23,10 @@ header{
     width: 240px;
     color: $color;
     background-color: $bg-color;
+    left: $left;
+    right: $right;
+    transition: right 0.3s ease-in, left 0.3s ease-in;
+    position: relative;
     
     & a{
         display: inline-flex;
@@ -39,30 +43,37 @@ header{
     }
 }
 
-@mixin link-bg-dis($left, $right) {
+@mixin link-bg-dis() {
     position: absolute;
     z-index: -2;
     top: 0;
-    left: $left;
-    right: $right;
-    transition: width 0.8s ease-out 0.05s;
-    
+    transition: width 0.8s ease-out 0.05s,border-radius 0.8s ease-out 0.2s;
+    border-radius: 0;
     width: 100vw;
 }
 
 
+
 .btn-si{
-    @include link-bg(0 0 20px 0, $primary, $primaryLighter);
+    @include link-bg(0 0 20px 0, $primary, $primaryLighter,0px,unset);
 
     &.dis{
-        @include link-bg-dis(0,unset);
+        @include link-bg-dis();
+    }
+
+    &.hide{
+        left: -240px;
     }
 }
 
 .btn-so{
-    @include link-bg(0 0 0 20px, $primaryLighter, $primary);
+    @include link-bg(0 0 0 20px, $primaryLighter, $primary,unset,0px);
 
     &.dis{
-        @include link-bg-dis(unset,0);
+        @include link-bg-dis();
+    }
+
+    &.hide{
+        right: -240px;
     }
 }

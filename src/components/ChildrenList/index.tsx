@@ -8,13 +8,14 @@ import { createArrayWithSubarrays } from '../../utils/array';
 interface IOwnProps {
     children: Array<any>
     theme: 'light' | 'dark'
+    path: string
 }
 
 
 type TProps = IOwnProps
 
 
-const ChildrenList: React.FunctionComponent<TProps> = ({ children, theme }) => {
+const ChildrenList: React.FunctionComponent<TProps> = ({ children, theme, path }) => {
 
     const pages = () => {
         const pages = createArrayWithSubarrays(children, 10)
@@ -26,6 +27,7 @@ const ChildrenList: React.FunctionComponent<TProps> = ({ children, theme }) => {
                             return (
                                 <ChildCard
                                     key={child.childId}
+                                    path={path}
                                     firstName={child.name.firstName}
                                     imgUrl={child.image.large}
                                     childId={child.childId}

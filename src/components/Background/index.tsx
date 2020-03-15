@@ -5,7 +5,7 @@ type TProps = RouteComponentProps
 
 const Background: React.FunctionComponent<TProps>= ({location}) => {
 
-    const bgSignIn = location.pathname === '/signin' ? true : false
+    const bgSignIn = location.pathname.includes('/signin') ? true : false
 
     return (
         <div className={`background ${bgSignIn?'sIn':'sOut'}`}>

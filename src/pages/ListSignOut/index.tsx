@@ -3,12 +3,13 @@ import React, { Component } from 'react'
 import { getChildren } from '../../api'
 import ChildrenList from '../../components/ChildrenList'
 import Loading from '../../components/Loading'
+import { RouteComponentProps } from 'react-router'
 
 interface IState {
     sortedChildren?: any
 }
 
-class ListSignOut extends Component<{}, IState> {
+class ListSignOut extends Component<RouteComponentProps, IState> {
 
     public state: IState = {
         sortedChildren: undefined
@@ -20,6 +21,7 @@ class ListSignOut extends Component<{}, IState> {
 
     public render() {
         const { sortedChildren } = this.state
+        const {match} = this.props
         const theme = 'dark'
 
         if (!sortedChildren) {
@@ -31,8 +33,6 @@ class ListSignOut extends Component<{}, IState> {
                 </div>
             )
         }
-        console.log(sortedChildren);
-
 
         if (!sortedChildren.length) {
             return (
@@ -44,7 +44,7 @@ class ListSignOut extends Component<{}, IState> {
 
         return (
             <>
-                <ChildrenList theme={theme} children={sortedChildren} />
+                <ChildrenList theme={theme} children={sortedChildren} path={match.path}/>
             </>
         )
     }

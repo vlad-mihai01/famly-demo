@@ -2967,7 +2967,11 @@ header {
   height: 60px;
   width: 240px;
   color: #474a81;
-  background-color: #f3f4f9; }
+  background-color: #f3f4f9;
+  left: 0px;
+  right: unset;
+  transition: right 0.3s ease-in, left 0.3s ease-in;
+  position: relative; }
   .btn-si a {
     display: inline-flex;
     justify-content: center;
@@ -2982,10 +2986,11 @@ header {
     position: absolute;
     z-index: -2;
     top: 0;
-    left: 0;
-    right: unset;
-    transition: width 0.8s ease-out 0.05s;
+    transition: width 0.8s ease-out 0.05s,border-radius 0.8s ease-out 0.2s;
+    border-radius: 0;
     width: 100vw; }
+  .btn-si.hide {
+    left: -240px; }
 
 .btn-so {
   font-family: 'Lato';
@@ -2999,7 +3004,11 @@ header {
   height: 60px;
   width: 240px;
   color: #f3f4f9;
-  background-color: #474a81; }
+  background-color: #474a81;
+  left: unset;
+  right: 0px;
+  transition: right 0.3s ease-in, left 0.3s ease-in;
+  position: relative; }
   .btn-so a {
     display: inline-flex;
     justify-content: center;
@@ -3014,10 +3023,11 @@ header {
     position: absolute;
     z-index: -2;
     top: 0;
-    left: unset;
-    right: 0;
-    transition: width 0.8s ease-out 0.05s;
+    transition: width 0.8s ease-out 0.05s,border-radius 0.8s ease-out 0.2s;
+    border-radius: 0;
     width: 100vw; }
+  .btn-so.hide {
+    right: -240px; }
 
 .swiper-container {
   display: flex;

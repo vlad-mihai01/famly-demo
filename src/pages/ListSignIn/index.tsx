@@ -23,6 +23,8 @@ class ListSignIn extends Component<RouteComponentProps, IState> {
     public render() {
 
         const { sortedChildren } = this.state
+        const {match} = this.props
+
         const theme = 'light'
         if (!sortedChildren) {
             return (
@@ -44,7 +46,7 @@ class ListSignIn extends Component<RouteComponentProps, IState> {
 
         return (
             <>
-                <ChildrenList theme={theme} children={sortedChildren} />
+                <ChildrenList theme={theme} children={sortedChildren} path={match.path}/>
             </>
         )
     }
