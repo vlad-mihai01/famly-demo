@@ -18,13 +18,18 @@ const ChildrenList: React.FunctionComponent<TProps> = ({ children, theme }) => {
 
     const pages = () => {
         const pages = createArrayWithSubarrays(children, 10)
-        return pages.map((page) => {
+        return pages.map((page, index) => {
             return (
-                <div className='swiper-page'>
+                <div key={index} className='swiper-page'>
                     <div className='sw-p-container'>
                         {page.map((child: any) => {
                             return (
-                                <ChildCard firstName={child.name.firstName} imgUrl={child.image.large} />
+                                <ChildCard
+                                    key={child.childId}
+                                    firstName={child.name.firstName}
+                                    imgUrl={child.image.large}
+                                    childId={child.childId}
+                                />
                             )
                         })}
                     </div>
@@ -34,14 +39,14 @@ const ChildrenList: React.FunctionComponent<TProps> = ({ children, theme }) => {
         })
     }
 
-    
+
     const swipeParams = {
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
-            renderBullet: function (index:number ,className:string) {
+            renderBullet: function (index: number, className: string) {
                 return `<span class='${theme} ${className}'> </span>`
-              }
+            }
         }
     }
     return (

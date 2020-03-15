@@ -1,0 +1,8 @@
+@mixin page-content-appear($time) {
+    animation: appear $time ease;
+}
+
+@keyframes appear {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}

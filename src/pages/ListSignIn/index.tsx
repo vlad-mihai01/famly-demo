@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 
 import ChildrenList from '../../components/ChildrenList'
+import Loading from '../../components/Loading'
 
 import { getChildren } from '../../api';
+import { RouteComponentProps } from 'react-router';
 
 interface IState {
-    sortedChildren? : any 
+    sortedChildren?: any
 }
 
-class ListSignIn extends Component<{},IState> {
+class ListSignIn extends Component<RouteComponentProps, IState> {
 
-    public state:IState = {
+    public state: IState = {
         sortedChildren: undefined
     }
 
@@ -20,16 +22,29 @@ class ListSignIn extends Component<{},IState> {
 
     public render() {
 
-        const {sortedChildren} = this.state
-        if(!sortedChildren){
-            return(
-                <div></div>
+        const { sortedChildren } = this.state
+        const theme = 'light'
+        if (!sortedChildren) {
+            return (
+                <div className='container-list'>
+                    <div className='container-loading'>
+                        <Loading theme={theme} />
+                    </div>
+                </div>
+            )
+        }
+
+        if (!sortedChildren.length) {
+            return (
+                <div className='container-list'>
+                    <div className='list-empty light'>Every one is in school</div>
+                </div>
             )
         }
 
         return (
             <>
-                <ChildrenList theme='light' children={sortedChildren}/>
+                <ChildrenList theme={theme} children={sortedChildren} />
             </>
         )
     }
@@ -39,15 +54,15 @@ class ListSignIn extends Component<{},IState> {
         res && res.data && this.sortChildren(res.data.children)
     }
 
-    private sortChildren = (children:[]) => {
-        const sortedChildren:any = []
-        children.map((child:any) => {
-            if(!child.checkedIn && child.gender === 2){
+    private sortChildren = (children: []) => {
+        const sortedChildren: any = []
+        children.map((child: any) => {
+            if (!child.checkedIn) {
                 sortedChildren.push(child)
             }
         })
 
-        this.setState({sortedChildren})
+        this.setState({ sortedChildren })
     }
 }
 

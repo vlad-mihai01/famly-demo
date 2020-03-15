@@ -1,8 +1,6 @@
 .swiper-container{
-    display: flex;
-flex-direction: column;
-justify-content: space-around;
-height: calc(100vh - 76px);
+    @include body-container();
+    justify-content: space-around;
 }
 
 .swiper-wrapper{

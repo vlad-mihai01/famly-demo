@@ -6,18 +6,22 @@
 @import "node_modules/bootstrap/scss/mixins";
 
 // // Modules
-@import 'node_modules/bootstrap/scss/buttons.scss';
-@import 'node_modules/bootstrap/scss/card.scss';
-@import 'node_modules/bootstrap/scss/utilities.scss';
 @import 'node_modules/bootstrap/scss/bootstrap-reboot.scss';
 @import 'node_modules/bootstrap/scss/bootstrap-grid.scss';
 
 // Custom 
 
 @import "./scss/_palette.scss";
-@import './scss/typography.scss';
+@import './scss/_typography.scss';
+@import './scss/_container.scss';
+@import './scss/_animations.scss';
+
+// // Pages
+@import './pages/ListSignIn/list.scss';
+
+// // Components
 @import './components/Background/background.scss';
 @import './components/Header/header.scss';
 @import './components/ChildrenList/children-list.scss';
 @import './components/ChildCard/child-card.scss';
-
+@import './components/Loading/loading.scss';

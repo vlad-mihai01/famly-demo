@@ -1,3 +1,9 @@
+@mixin h1($weight) {
+    font-family: 'Lato';
+    font-size: 60px;
+    font-weight: $weight;
+}
+
 @mixin header($weight) {
     font-family: 'Lato';
     font-size: 32px;

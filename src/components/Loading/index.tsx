@@ -1,12 +1,12 @@
 import React from 'react'
 
 interface IOwnProps {
-    theme : 'light' | 'dark'
+    theme: 'light' | 'dark'
 }
 
-const Loading: React.FunctionComponent<IOwnProps> = () => {
+const Loading: React.FunctionComponent<IOwnProps> = ({theme}) => {
     return (
-        <div>L</div>
+        <div className={`loading ${theme}`}></div>
     )
 }
 

@@ -27,12 +27,8 @@ class App extends Component<TProps> {
                         <Route exact path='/'>
                             <Redirect to='/signin'/>
                         </Route>
-                        <Route exact path='/signin'>
-                            <ListSignIn/>
-                        </Route>
-                        <Route exact path='/signout'>
-                            <ListSignOut />
-                        </Route>
+                        <Route exact path='/signin' component={ListSignIn}/>
+                        <Route exact path='/signout' component={ListSignOut}/>
                     </Switch>
             </>
         );

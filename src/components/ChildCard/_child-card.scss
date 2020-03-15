@@ -1,4 +1,5 @@
 .child-card{
+    @include page-content-appear(1s);
     display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +10,6 @@
     margin-left: 12px;
     margin-right: 12px;
     margin-bottom: 32px;
-    animation: appear 1s ease;
 
    & img {
         border-radius: 50%;
@@ -29,12 +29,6 @@
         color: $primaryDarker;
         margin: 0;
     } 
-}
-
-
-@keyframes appear {
-    0%{opacity: 0;}
-    100%{opacity: 1;}
 }
 
 @keyframes imgBgLoading {

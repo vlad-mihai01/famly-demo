@@ -1,0 +1,25 @@
+.container-list{
+    @include body-container();
+    justify-content: center;
+    align-items: center;
+}
+
+.container-loading{
+    display: inline-flex;
+    width: 120px;
+    margin-bottom: 20%;
+}
+
+.list-empty{
+    @include h1(700);
+    @include page-content-appear(1s);
+    margin-bottom: 20%;
+
+    &.light{
+        color: $primaryDark;
+    }
+
+    &.dark{
+        color: $primaryLighter;
+    }
+}
