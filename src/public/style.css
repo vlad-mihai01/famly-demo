@@ -3035,6 +3035,58 @@ html {
       .container-sign-out .container-actions .btn-dark-secondary:active {
         border: 2px solid rgba(230, 233, 246, 0.95); }
 
+.container-receipt {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 76px);
+  animation: appear 1s ease;
+  padding-top: 16px;
+  align-items: center; }
+  .container-receipt .container-image {
+    display: inline-flex;
+    position: relative; }
+    .container-receipt .container-image img {
+      background: linear-gradient(90deg, rgba(71, 74, 129, 0.1), rgba(71, 74, 129, 0.4), rgba(71, 74, 129, 0.1));
+      background-size: 250% 250%;
+      animation: imgBgLoading 6s ease-in-out infinite;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      height: 180px;
+      width: 180px;
+      margin-bottom: 32px; }
+    .container-receipt .container-image svg {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      padding: 2px;
+      position: absolute;
+      color: #fff;
+      bottom: 48px;
+      right: 4px; }
+  .container-receipt p {
+    font-family: 'Lato';
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: initial;
+    text-align: center; }
+  .container-receipt span p {
+    margin-bottom: 8px; }
+    .container-receipt span p:last-child {
+      margin-bottom: 32px; }
+  .container-receipt.light .container-image img {
+    border: 6px solid #2e7d2e; }
+  .container-receipt.light .container-image svg {
+    background-color: #2e7d2e; }
+  .container-receipt.light p {
+    color: #1e2158; }
+  .container-receipt.dark .container-image img {
+    border: 6px solid #33cc33; }
+  .container-receipt.dark .container-image svg {
+    background-color: #33cc33; }
+  .container-receipt.dark p {
+    color: #f3f4f9; }
+
 .background {
   display: flex;
   position: absolute;
@@ -3204,9 +3256,9 @@ header {
   justify-content: center; }
   .swiper-page .sw-p-container {
     display: inline-flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    max-width: 960px; }
+    max-width: 940px; }
 
 .swiper-pagination {
   position: initial;

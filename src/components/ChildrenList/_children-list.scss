@@ -13,9 +13,9 @@
 
     .sw-p-container{
         display: inline-flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-wrap: wrap;
-        max-width: 960px;
+        max-width: 940px;
     }
 }
 

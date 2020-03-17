@@ -12,7 +12,7 @@ type TProps = RouteComponentProps<TParams> & IReducerProps
 
 class Receipt extends Component<TProps>{
     public componentDidMount(){
-        setTimeout(this.redirectToHome,2500)
+        this.redirectToHome()
     }
 
     public render() {
@@ -53,9 +53,10 @@ class Receipt extends Component<TProps>{
         const {history} = this.props
         const listSignIn = location.pathname.includes('/signin') ? true : false
         if(listSignIn){
-            history.replace('/signin')
+            setTimeout(()=>history.replace('/signin'),4000) 
         } else {
-            history.replace('/signout')
+            setTimeout(()=>history.replace('/signout'),2000)
+            
         }
     }
 }
