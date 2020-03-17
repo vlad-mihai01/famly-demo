@@ -34,7 +34,9 @@ class SignOut extends Component<TProps> {
     private signOutChild = async () => {
         const { childId } = this.props.reducerCurrentChild
         const res = await postCheckoutChild(childId).catch(err => { console.error(err); })
-        res && res.data && console.log(res.data);
+        if(res && res.data){ 
+            this.props.history.replace('/signout/receipt');
+        }
     }
 
 }

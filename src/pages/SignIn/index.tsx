@@ -179,9 +179,11 @@ class SignIn extends Component<TProps, IState> {
         const {pickUpHour,pickUpMinutes} = this.state
         const {childId} = this.props.reducerCurrentChild
         const pickUpTime = `${pickUpHour}:${pickUpMinutes}`
-
+        
         const res = await postCheckinChild(childId,pickUpTime).catch(err => { console.error(err); })
-        res && res.data && console.log(res.data);
+        if(res && res.data){ 
+            this.props.history.replace(`/signin/receipt/${pickUpTime}`);
+        }
         
     }
 }

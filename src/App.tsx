@@ -14,6 +14,7 @@ import ListSignIn from './pages/ListSignIn'
 import ListSignOut from './pages/ListSignOut'
 import SignIn from './pages/SignIn'
 import SignOut from './pages/SignOut'
+import Receipt from './pages/Receipt'
 
 
 type TProps = RouteComponentProps
@@ -32,8 +33,10 @@ class App extends Component<TProps> {
                         </Route>
                         <Route exact path='/signin' component={ListSignIn}/>
                         <Route exact path='/signout' component={ListSignOut}/>
-                        <Route path="/signin/:childId" component={SignIn} />
-                        <Route path="/signout/:childId" component={SignOut} />
+                        <Route exact path="/signin/:childId" component={SignIn} />
+                        <Route exact path="/signin/receipt/:pickUpTime" component={Receipt}/>
+                        <Route exact path="/signout/receipt" component={Receipt} />
+                        <Route exact path="/signout/:childId" component={SignOut} />
                     </Switch>
             </>
         );

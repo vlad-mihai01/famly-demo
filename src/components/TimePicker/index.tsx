@@ -108,7 +108,6 @@ class TimePicker extends Component<IOwnProps, IState>{
     }
 
     private onValueClick = (e:any) => {
-        console.log(e.target.value);
         const {hoursOpen,minutesOpen} = this.state
         if(hoursOpen){
             this.props.updatePickUpHour(e.target.value)
