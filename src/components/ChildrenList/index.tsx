@@ -9,14 +9,16 @@ interface IOwnProps {
     children: Array<any>
     theme: 'light' | 'dark'
     path: string
+    updateCurrentChild: (payload: any) => void
 }
 
 
 type TProps = IOwnProps
 
 
-const ChildrenList: React.FunctionComponent<TProps> = ({ children, theme, path }) => {
-
+const ChildrenList: React.FunctionComponent<TProps> = ({ children, theme, path, updateCurrentChild }) => {
+    console.log('cl-theme',theme);
+    
     const pages = () => {
         const pages = createArrayWithSubarrays(children, 10)
         return pages.map((page, index) => {
@@ -28,9 +30,8 @@ const ChildrenList: React.FunctionComponent<TProps> = ({ children, theme, path }
                                 <ChildCard
                                     key={child.childId}
                                     path={path}
-                                    firstName={child.name.firstName}
-                                    imgUrl={child.image.large}
-                                    childId={child.childId}
+                                    child={child}
+                                    updateCurrentChild={updateCurrentChild}
                                 />
                             )
                         })}
@@ -47,6 +48,8 @@ const ChildrenList: React.FunctionComponent<TProps> = ({ children, theme, path }
             el: '.swiper-pagination',
             clickable: true,
             renderBullet: function (index: number, className: string) {
+                console.log('bullet');
+                
                 return `<span class='${theme} ${className}'> </span>`
             }
         }

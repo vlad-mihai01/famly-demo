@@ -1,0 +1,7 @@
+@mixin img-circle($h,$w) {
+    @include loading-circle-image();
+    border-radius: 50%;
+    margin-bottom: 12px;
+    height: $h;
+    width: $w;
+}

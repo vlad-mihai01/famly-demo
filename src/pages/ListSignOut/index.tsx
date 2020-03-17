@@ -1,15 +1,26 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux'
+import { RouteComponentProps } from 'react-router'
+
+import Loading from '../../components/Loading'
+import ChildrenList from '../../components/ChildrenList'
 
 import { getChildren } from '../../api'
-import ChildrenList from '../../components/ChildrenList'
-import Loading from '../../components/Loading'
-import { RouteComponentProps } from 'react-router'
+import { updateCurrentChild } from '../../actions'
+
 
 interface IState {
     sortedChildren?: any
 }
 
-class ListSignOut extends Component<RouteComponentProps, IState> {
+interface IActionProps {
+    updateCurrentChild: (payload: any) => void
+}
+
+type TProps = RouteComponentProps & IActionProps
+
+class ListSignOut extends Component<TProps, IState> {
 
     public state: IState = {
         sortedChildren: undefined
@@ -21,7 +32,7 @@ class ListSignOut extends Component<RouteComponentProps, IState> {
 
     public render() {
         const { sortedChildren } = this.state
-        const {match} = this.props
+        const { match, updateCurrentChild } = this.props
         const theme = 'dark'
 
         if (!sortedChildren) {
@@ -44,7 +55,12 @@ class ListSignOut extends Component<RouteComponentProps, IState> {
 
         return (
             <>
-                <ChildrenList theme={theme} children={sortedChildren} path={match.path}/>
+                <ChildrenList
+                    theme={theme}
+                    children={sortedChildren}
+                    path={match.path}
+                    updateCurrentChild={updateCurrentChild}
+                />
             </>
         )
     }
@@ -70,4 +86,8 @@ class ListSignOut extends Component<RouteComponentProps, IState> {
 }
 
 
-export default ListSignOut
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    updateCurrentChild: (payload: any) => dispatch(updateCurrentChild(payload))
+})
+
+export default connect(null, mapDispatchToProps)(ListSignOut)

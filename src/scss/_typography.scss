@@ -4,14 +4,32 @@
     font-weight: $weight;
 }
 
+@mixin h2($weight) {
+    font-family: 'Lato';
+    font-size: 48px;
+    font-weight: $weight;
+}
+
 @mixin header($weight) {
     font-family: 'Lato';
     font-size: 32px;
     font-weight: $weight;
 }
 
+@mixin subheader($weight) {
+    font-family: 'Lato';
+    font-size: 28px;
+    font-weight: $weight;
+}
+
 @mixin title($weight) {
     font-family: 'Lato';
     font-size: 24px;
+    font-weight: $weight;
+}
+
+@mixin caption($weight) {
+    font-family: 'Lato';
+    font-size: 20px;
     font-weight: $weight;
 }

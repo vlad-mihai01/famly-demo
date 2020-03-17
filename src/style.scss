@@ -16,8 +16,13 @@
 @import './scss/_container.scss';
 @import './scss/_animations.scss';
 
+// // Elements
+@import './scss/elements/_img.scss';
+@import './scss/elements/_button.scss';
+
 // // Pages
 @import './pages/ListSignIn/list.scss';
+@import './pages/SignIn/sign-in.scss';
 
 // // Components
 @import './components/Background/background.scss';
@@ -25,3 +30,4 @@
 @import './components/ChildrenList/children-list.scss';
 @import './components/ChildCard/child-card.scss';
 @import './components/Loading/loading.scss';
+@import './components//TimePicker/time-picker';

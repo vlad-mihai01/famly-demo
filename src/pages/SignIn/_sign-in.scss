@@ -1,0 +1,66 @@
+.container-sign-in {
+  @include body-container();
+  @include page-content-appear(1s);
+  justify-content: space-around;
+  padding: 0px 60px;
+ 
+}
+
+.container-details {
+  display: inline-flex;
+  flex-direction: row;
+  width: 100%;
+
+  .child-info {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 44px;
+    margin-left: 32px;
+
+    img {
+      @include img-circle(140px, 140px);
+      margin-bottom: 12px;
+    }
+
+    p {
+      @include title(700);
+      color: $primaryDark;
+      margin: 0;
+      line-height: initial;
+    }
+  }
+
+  .pickup-info {
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+      p{
+        @include header(700);
+        color: $primaryDark;
+        margin-bottom: 16px;
+        line-height: initial;
+      }
+  }
+}
+
+.container-actions {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+
+
+
+  .btn-light-primary{
+    @include button(60px,300px);
+    @include btn-light-primary();
+    margin-left: 4%;
+  }
+
+  .btn-light-secondary{
+    @include button(60px,300px);
+    @include btn-light-secondary();
+    margin-right: 4%;
+  }
+}

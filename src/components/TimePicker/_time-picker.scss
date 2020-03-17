@@ -1,0 +1,39 @@
+.container-timer{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
+    .clock{
+        display: inline-flex;
+        align-items: center;
+
+        button{
+            @include button(92px,92px);
+            @include btn-light-secondary();
+            @include h1(700);
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+
+        span{
+            @include h2(700);
+            color: $primaryDark;
+            text-transform: uppercase;
+
+            &:first-of-type{
+                @include h1(700);
+            }
+        }
+    }
+
+    .container-picker{
+        display: inline-flex;
+        background-color: $primaryLight;
+        border-radius: 20px;
+        padding: 8px 12px;
+
+        p{
+            margin-bottom: 4px;
+        }
+    }
+}

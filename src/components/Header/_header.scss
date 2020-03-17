@@ -1,7 +1,7 @@
 header{
     display: flex;
     margin-bottom: 16px;
-
+    overflow: hidden;
     &.hsi{
         justify-content: flex-end;
     }
@@ -55,7 +55,7 @@ header{
 
 
 .btn-si{
-    @include link-bg(0 0 20px 0, $primary, $primaryLighter,0px,unset);
+    @include link-bg(0 0 20px 0, $primaryDark, $primaryLighter,0px,unset);
 
     &.dis{
         @include link-bg-dis();

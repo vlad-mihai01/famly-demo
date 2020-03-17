@@ -1,0 +1,31 @@
+@mixin button($h, $w) {
+  @include subheader(700);
+  height: $h;
+  width: $w;
+  border-radius: 20px;
+  border: none;
+
+  &:focus{
+      outline: none;
+  }
+}
+
+// Light Theme
+
+@mixin btn-light-primary() {
+  color: $primaryLighter;
+  background-color: $primary;
+
+  &:active{
+      background-color: $primaryDark;
+  }
+}
+
+@mixin btn-light-secondary() {
+  color: $primaryDark;
+  background-color: $primaryLight;
+
+  &:active{
+    background-color: rgba($primary, 0.1);
+}
+}

@@ -6,3 +6,16 @@
     0%{opacity: 0;}
     100%{opacity: 1;}
 }
+
+
+@mixin loading-circle-image() {
+    background: linear-gradient(90deg,rgba($primary, 0.1),rgba($primary, 0.4),rgba($primary, 0.1) );
+    background-size: 250% 250%;
+    animation: imgBgLoading 6s ease-in-out infinite;
+}
+
+@keyframes imgBgLoading {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}

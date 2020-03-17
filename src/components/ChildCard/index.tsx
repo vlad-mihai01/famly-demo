@@ -1,21 +1,25 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
+import browserHistory from '../../utils/history'
 
 interface IOwnProps {
-    firstName: string
-    imgUrl: string
-    childId: string
+    child: any
     path: string
+    updateCurrentChild: (payload: any) => void
 }
 
-const ChildCard: React.FunctionComponent<IOwnProps> = ({ firstName, imgUrl, childId,path }) => {
+const ChildCard: React.FunctionComponent<IOwnProps> = ({ child,path,updateCurrentChild }) => {
+
+    const onChildClick = () =>{
+        updateCurrentChild(child);
+        browserHistory.push(`${path}/${child.childId}`)
+    }
+    
     return (
-        <Link to={`${path}/${childId}`}>
-            <div key={childId} className='child-card'>
-                <img src={imgUrl} alt="" />
-                <p>{firstName}</p>
+            <div key={child.childId} className='child-card' onClick={onChildClick}>
+                <img src={child.image.large} alt="" />
+                <p>{child.name.firstName}</p>
             </div>
-        </Link>
     )
 }
 
