@@ -1,9 +1,8 @@
 .container-sign-in {
   @include body-container();
   @include page-content-appear(1s);
-  justify-content: space-around;
-  padding: 0px 60px;
- 
+  justify-content: space-between;
+  padding: 32px 60px 16px 60px;
 }
 
 .container-details {
@@ -38,7 +37,7 @@
       p{
         @include header(700);
         color: $primaryDark;
-        margin-bottom: 16px;
+        margin-bottom: 32px;
         line-height: initial;
       }
   }
@@ -49,6 +48,8 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  margin-top: 32px;
+  margin-bottom: 10%;
 
 
 

@@ -6,6 +6,7 @@
     .clock{
         display: inline-flex;
         align-items: center;
+        margin-bottom: 12px;
 
         button{
             @include button(92px,92px);
@@ -32,8 +33,26 @@
         border-radius: 20px;
         padding: 8px 12px;
 
+        &.disp-none{
+            display: none;
+        }
+
         p{
+            @include caption(700);
             margin-bottom: 4px;
+            color: $primaryDark;
+            text-transform: uppercase;
+        }
+
+        button{
+            @include button(60px,60px);
+            background-color: transparent;
+            margin: 4px;
+            color: $primaryDark;
+
+            &.button-active{
+                @include btn-light-primary();
+            }
         }
     }
 }

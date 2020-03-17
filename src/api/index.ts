@@ -13,3 +13,16 @@ export function getChildren(){
         }
     })
 }
+
+export function postCheckinChild(childId:string,pickupTime:string){
+    return axios.post(`https://tryfamly.co/api/v2/children/${childId}/checkins`,{
+            accessToken,
+            pickupTime
+    })
+}
+
+export function postCheckoutChild(childId:string){
+    return axios.post(`https://tryfamly.co/api/v2/children/${childId}/checkout`,{
+            accessToken,
+    })
+}

@@ -1,11 +1,47 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
 
-class SignOut extends Component<{}> {
-    render(){
-        return(
-            <div>Sign Out</div>
+
+import { postCheckoutChild } from '../../api';
+
+interface IReducerProps {
+    reducerCurrentChild: any
+}
+type TProps = RouteComponentProps & IReducerProps
+
+class SignOut extends Component<TProps> {
+
+
+    render() {
+
+        const { reducerCurrentChild, history } = this.props
+        const { name, image } = reducerCurrentChild
+        return (
+            <div className='container-sign-out'>
+                <div className='container-details'>
+                    <img src={image.large} alt="" />
+                    <p>{name.firstName}</p>
+                </div>
+                <div className='container-actions'>
+                    <button onClick={history.goBack} className='btn-dark-secondary' type="button">Back</button>
+                    <button onClick={this.signOutChild} className='btn-dark-primary' type="button">Sign out</button>
+                </div>
+            </div>
         )
     }
-} 
 
-export default SignOut
+    private signOutChild = async () => {
+        const { childId } = this.props.reducerCurrentChild
+        const res = await postCheckoutChild(childId).catch(err => { console.error(err); })
+        res && res.data && console.log(res.data);
+    }
+
+}
+
+
+const mapStateToProps = (state: any) => ({
+    reducerCurrentChild: state.reducerCurrentChild
+})
+
+export default connect(mapStateToProps)(SignOut)

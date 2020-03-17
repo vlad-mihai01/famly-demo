@@ -2,7 +2,12 @@ import React, { Component } from 'react'
 
 interface time {
     title: string
-    values: number[]
+    values: [
+        {
+            value:number
+            text: string | number
+        }
+    ]
 }
 
 type amPm = 'am' | 'pm' | ''
@@ -13,6 +18,8 @@ interface IOwnProps {
     amPm: amPm
     hoursArray: time[]
     minutesArray: time[]
+    updatePickUpHour: (value:number) => void
+    updatePickUpMinutes: (value:number) => void
 }
 
 interface IState {
@@ -27,21 +34,21 @@ class TimePicker extends Component<IOwnProps, IState>{
     }
 
     public render() {
-
+        const {minutesOpen,hoursOpen} = this.state
         const { hour, amPm, minutes } = this.props
 
         return (
             <div className='container-timer'>
                 <div className='clock'>
-                    <button>{hour}</button>
+                    <button onClick={this.onHoursClick}>{hour}</button>
                     <span>:</span>
-                    <button>{minutes}</button>
+                    <button onClick={this.onMinutesClick}>{minutes}</button>
                     <span>{amPm}</span>
                 </div>
-                <div className='container-picker'>
+                <div className={`container-picker ${!hoursOpen && 'disp-none'}`}>
                     {this.renderHours()}
                 </div>
-                <div className='container-picker'>
+                <div className={`container-picker ${!minutesOpen && 'disp-none'}`}>
                     {this.renderMinutes()}
                 </div>
             </div>
@@ -71,11 +78,15 @@ class TimePicker extends Component<IOwnProps, IState>{
                     <p className='title'>{time.title}</p>
                     <div className='values'>
                         {
-                            time.values.map((value: number) => {
+                            time.values.map((i: any) => {                                
                                 return (
                                     <button
-                                        className={value === hour || value === minutes ? 'button-active' : ''}
-                                        key={value}>{value % 12}
+                                    onClick={this.onValueClick}
+                                        className={i.text === hour || i.text === minutes ? 'button-active' : ''}
+                                        key={i.value}
+                                        value={i.value}
+                                        >
+                                            {i.text}
                                     </button>
                                 )
                             })
@@ -86,6 +97,29 @@ class TimePicker extends Component<IOwnProps, IState>{
         })
     }
 
+    private onHoursClick = ()=> {
+        const hoursOpen:boolean = this.state.hoursOpen ? false : true
+        this.setState({hoursOpen, minutesOpen:false})
+    }
+
+    private onMinutesClick = ()=> {
+        const minutesOpen:boolean = this.state.minutesOpen ? false : true
+        this.setState({minutesOpen, hoursOpen:false})
+    }
+
+    private onValueClick = (e:any) => {
+        console.log(e.target.value);
+        const {hoursOpen,minutesOpen} = this.state
+        if(hoursOpen){
+            this.props.updatePickUpHour(e.target.value)
+            this.onHoursClick()
+            this.onMinutesClick()
+        } else if(minutesOpen){
+            this.props.updatePickUpMinutes(e.target.value)
+            this.onMinutesClick()
+        }
+        
+    }
 
 }
 

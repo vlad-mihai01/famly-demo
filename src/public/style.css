@@ -2888,8 +2888,8 @@ html {
   flex-direction: column;
   height: calc(100vh - 76px);
   animation: appear 1s ease;
-  justify-content: space-around;
-  padding: 0px 60px; }
+  justify-content: space-between;
+  padding: 32px 60px 16px 60px; }
 
 .container-details {
   display: inline-flex;
@@ -2926,14 +2926,16 @@ html {
       font-size: 32px;
       font-weight: 700;
       color: #31346C;
-      margin-bottom: 16px;
+      margin-bottom: 32px;
       line-height: initial; }
 
 .container-actions {
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%; }
+  width: 100%;
+  margin-top: 32px;
+  margin-bottom: 10%; }
   .container-actions .btn-light-primary {
     font-family: 'Lato';
     font-size: 28px;
@@ -2964,6 +2966,74 @@ html {
       outline: none; }
     .container-actions .btn-light-secondary:active {
       background-color: rgba(71, 74, 129, 0.1); }
+
+.container-sign-out {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 76px);
+  animation: appear 1s ease;
+  justify-content: space-between;
+  padding: 32px 60px 16px 60px; }
+  .container-sign-out .container-details {
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center; }
+    .container-sign-out .container-details img {
+      background: linear-gradient(90deg, rgba(71, 74, 129, 0.1), rgba(71, 74, 129, 0.4), rgba(71, 74, 129, 0.1));
+      background-size: 250% 250%;
+      animation: imgBgLoading 6s ease-in-out infinite;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      height: 180px;
+      width: 180px;
+      border: 6px solid #f3f4f9;
+      margin-bottom: 12px; }
+    .container-sign-out .container-details p {
+      font-family: 'Lato';
+      font-size: 28px;
+      font-weight: 700;
+      color: #f3f4f9;
+      margin: 0;
+      line-height: initial; }
+  .container-sign-out .container-actions {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 32px;
+    margin-bottom: 10%; }
+    .container-sign-out .container-actions .btn-dark-primary {
+      font-family: 'Lato';
+      font-size: 28px;
+      font-weight: 700;
+      height: 60px;
+      width: 300px;
+      border-radius: 20px;
+      border: none;
+      color: #31346C;
+      background-color: #e6e9f6;
+      margin-left: 4%; }
+      .container-sign-out .container-actions .btn-dark-primary:focus {
+        outline: none; }
+      .container-sign-out .container-actions .btn-dark-primary:active {
+        background-color: rgba(230, 233, 246, 0.95); }
+    .container-sign-out .container-actions .btn-dark-secondary {
+      font-family: 'Lato';
+      font-size: 28px;
+      font-weight: 700;
+      height: 60px;
+      width: 300px;
+      border-radius: 20px;
+      border: none;
+      color: #e6e9f6;
+      background-color: transparent;
+      border: 2px solid #e6e9f6;
+      margin-right: 4%; }
+      .container-sign-out .container-actions .btn-dark-secondary:focus {
+        outline: none; }
+      .container-sign-out .container-actions .btn-dark-secondary:active {
+        border: 2px solid rgba(230, 233, 246, 0.95); }
 
 .background {
   display: flex;
@@ -3221,7 +3291,8 @@ header {
   align-items: center; }
   .container-timer .clock {
     display: inline-flex;
-    align-items: center; }
+    align-items: center;
+    margin-bottom: 12px; }
     .container-timer .clock button {
       font-family: 'Lato';
       font-size: 28px;
@@ -3256,5 +3327,30 @@ header {
     background-color: #e6e9f6;
     border-radius: 20px;
     padding: 8px 12px; }
+    .container-timer .container-picker.disp-none {
+      display: none; }
     .container-timer .container-picker p {
-      margin-bottom: 4px; }
+      font-family: 'Lato';
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #31346C;
+      text-transform: uppercase; }
+    .container-timer .container-picker button {
+      font-family: 'Lato';
+      font-size: 28px;
+      font-weight: 700;
+      height: 60px;
+      width: 60px;
+      border-radius: 20px;
+      border: none;
+      background-color: transparent;
+      margin: 4px;
+      color: #31346C; }
+      .container-timer .container-picker button:focus {
+        outline: none; }
+      .container-timer .container-picker button.button-active {
+        color: #f3f4f9;
+        background-color: #474a81; }
+        .container-timer .container-picker button.button-active:active {
+          background-color: #31346C; }

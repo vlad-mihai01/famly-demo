@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 
 import TimePicker from '../../components/TimePicker'
+import { postCheckinChild } from '../../api';
+
+
 type amPm = 'am' | 'pm' | ''
 
 interface IState {
-    pickUpHour: number | string
+    pickUpHour: number | any
     pickUpMinutes: number | string
     pickUpAmPm: amPm
     hoursArray: any
@@ -36,11 +39,11 @@ class SignIn extends Component<TProps, IState> {
     }
 
     render() {
-        console.log(this.props);
         const { pickUpAmPm, pickUpMinutes, pickUpHour, hoursArray, minutesArray } = this.state
-
         const { reducerCurrentChild, history } = this.props
         const { name, image } = reducerCurrentChild
+
+        const hour = pickUpHour <=12 ? pickUpHour : pickUpHour % 12
 
         return (
             <div className='container-sign-in'>
@@ -54,18 +57,20 @@ class SignIn extends Component<TProps, IState> {
                         <p>Choose pick up time</p>
 
                         <TimePicker
-                            hour={pickUpHour}
+                            hour={hour}
                             minutes={pickUpMinutes}
                             amPm={pickUpAmPm}
                             hoursArray={hoursArray}
                             minutesArray={minutesArray}
+                            updatePickUpHour={this.updatePickUpHour}
+                            updatePickUpMinutes={this.updatePickUpMinutes}
                         />
 
                     </div>
                 </div>
                 <div className='container-actions'>
                     <button onClick={history.goBack} className='btn-light-secondary' type="button">Back</button>
-                    <button className='btn-light-primary' type="button">Sign in</button>
+                    <button onClick={this.signInChild} className='btn-light-primary' type="button">Sign in</button>
                 </div>
             </div>
         )
@@ -75,24 +80,72 @@ class SignIn extends Component<TProps, IState> {
         const currentTime = this.getCurrentTime()
 
         const amPm = currentTime.hour <= 12 ? 'am' : 'pm'
-        const currentHour = currentTime.hour
+        const currentHour = currentTime.hour + 1
         const currentMinutes = currentTime.minutes
 
         const pickUpTimesHours = [
             {
                 title: 'am',
-                values: [9, 10, 11, 12]
+                values: [
+                    {
+                        value: 11,
+                        text: 11
+                    },
+                    {
+                        value: 12,
+                        text: 12
+                    }
+                ]
             },
             {
                 title: 'pm',
-                values: [13, 14, 15, 16, 17, 18]
+                values: [
+                    {
+                        value: 13,
+                        text: 1
+                    },
+                    {
+                        value: 14,
+                        text: 2
+                    },
+                    {
+                        value: 15,
+                        text: 3
+                    },
+                    {
+                        value: 16,
+                        text: 4
+                    },
+                    {
+                        value: 17,
+                        text: 5
+                    }
+
+                ]
             }
         ]
 
         const pickUpTimesMinutes = [
             {
                 title: 'minutes',
-                values: [0, 15, 30, 45]
+                values: [
+                    {
+                        value: 0,
+                        text: '00'
+                    },
+                    {
+                        value: 15,
+                        text: '15'
+                    },
+                    {
+                        value: 30,
+                        text: '30'
+                    },
+                    {
+                        value: 45,
+                        text: '45'
+                    }
+                ]
             },
         ]
 
@@ -111,6 +164,25 @@ class SignIn extends Component<TProps, IState> {
         const minutes = now.getMinutes()
 
         return { hour, minutes }
+    }
+
+    private updatePickUpHour = (value: number) => {
+        const amPM = value <= 12 ? 'am' : 'pm'
+        this.setState({ pickUpHour: value, pickUpAmPm:amPM })
+    }
+
+    private updatePickUpMinutes = (value: number) => {
+        this.setState({ pickUpMinutes: value })
+    }
+
+    private signInChild = async () => {
+        const {pickUpHour,pickUpMinutes} = this.state
+        const {childId} = this.props.reducerCurrentChild
+        const pickUpTime = `${pickUpHour}:${pickUpMinutes}`
+
+        const res = await postCheckinChild(childId,pickUpTime).catch(err => { console.error(err); })
+        res && res.data && console.log(res.data);
+        
     }
 }
 

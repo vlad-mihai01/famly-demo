@@ -29,3 +29,24 @@
     background-color: rgba($primary, 0.1);
 }
 }
+
+
+@mixin btn-dark-primary() {
+  color: $primaryDark;
+  background-color: $primaryLight;
+
+  &:active{
+    background-color: rgba($primaryLight, 0.95);
+}
+}
+
+
+@mixin btn-dark-secondary() {
+  color: $primaryLight;
+  background-color: transparent;
+  border: 2px solid $primaryLight;
+
+  &:active{
+    border: 2px solid rgba($primaryLight, 0.95);
+}
+}
