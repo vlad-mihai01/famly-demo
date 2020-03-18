@@ -34,16 +34,12 @@ class SignIn extends Component<TProps, IState> {
         }
     }
 
-    public componentDidMount() {
-        this.initialisePickUpTime()
-    }
-
     render() {
-        const { pickUpAmPm, pickUpMinutes, pickUpHour, hoursArray, minutesArray } = this.state
         const { reducerCurrentChild, history } = this.props
         const { name, image } = reducerCurrentChild
 
-        const hour = pickUpHour <=12 ? pickUpHour : pickUpHour % 12
+        const pickUpHours = [10,11,12,13,14,15,16,17]
+        const pickUpMinutes = [0,15,30,45]
 
         return (
             <div className='container-sign-in'>
@@ -57,13 +53,15 @@ class SignIn extends Component<TProps, IState> {
                         <p>Choose pick up time</p>
 
                         <TimePicker
-                            hour={hour}
-                            minutes={pickUpMinutes}
-                            amPm={pickUpAmPm}
-                            hoursArray={hoursArray}
-                            minutesArray={minutesArray}
-                            updatePickUpHour={this.updatePickUpHour}
-                            updatePickUpMinutes={this.updatePickUpMinutes}
+                            initialTime={
+                                {
+                                    hour: 15,
+                                    minutes: 25
+                                }
+                            }
+                            mode12={true}
+                            hoursArray={pickUpHours}
+                            minutesArray={pickUpMinutes}
                         />
 
                     </div>
@@ -76,115 +74,17 @@ class SignIn extends Component<TProps, IState> {
         )
     }
 
-    private initialisePickUpTime = () => {
-        const currentTime = this.getCurrentTime()
-
-        const amPm = currentTime.hour <= 12 ? 'am' : 'pm'
-        const currentHour = currentTime.hour + 1
-        const currentMinutes = currentTime.minutes
-
-        const pickUpTimesHours = [
-            {
-                title: 'am',
-                values: [
-                    {
-                        value: 11,
-                        text: 11
-                    },
-                    {
-                        value: 12,
-                        text: 12
-                    }
-                ]
-            },
-            {
-                title: 'pm',
-                values: [
-                    {
-                        value: 13,
-                        text: 1
-                    },
-                    {
-                        value: 14,
-                        text: 2
-                    },
-                    {
-                        value: 15,
-                        text: 3
-                    },
-                    {
-                        value: 16,
-                        text: 4
-                    },
-                    {
-                        value: 17,
-                        text: 5
-                    }
-
-                ]
-            }
-        ]
-
-        const pickUpTimesMinutes = [
-            {
-                title: 'minutes',
-                values: [
-                    {
-                        value: 0,
-                        text: '00'
-                    },
-                    {
-                        value: 15,
-                        text: '15'
-                    },
-                    {
-                        value: 30,
-                        text: '30'
-                    },
-                    {
-                        value: 45,
-                        text: '45'
-                    }
-                ]
-            },
-        ]
-
-        this.setState({
-            pickUpAmPm: amPm,
-            pickUpHour: currentHour,
-            pickUpMinutes: currentMinutes,
-            hoursArray: pickUpTimesHours,
-            minutesArray: pickUpTimesMinutes
-        })
-    }
-
-    private getCurrentTime = () => {
-        const now = new Date();
-        const hour = now.getHours()
-        const minutes = now.getMinutes()
-
-        return { hour, minutes }
-    }
-
-    private updatePickUpHour = (value: number) => {
-        const amPM = value <= 12 ? 'am' : 'pm'
-        this.setState({ pickUpHour: value, pickUpAmPm:amPM })
-    }
-
-    private updatePickUpMinutes = (value: number) => {
-        this.setState({ pickUpMinutes: value })
-    }
 
     private signInChild = async () => {
-        const {pickUpHour,pickUpMinutes} = this.state
-        const {childId} = this.props.reducerCurrentChild
+        const { pickUpHour, pickUpMinutes } = this.state
+        const { childId } = this.props.reducerCurrentChild
         const pickUpTime = `${pickUpHour}:${pickUpMinutes}`
-        
-        const res = await postCheckinChild(childId,pickUpTime).catch(err => { console.error(err); })
-        if(res && res.data){ 
+
+        const res = await postCheckinChild(childId, pickUpTime).catch(err => { console.error(err); })
+        if (res && res.data) {
             this.props.history.replace(`/signin/receipt/${pickUpTime}`);
         }
-        
+
     }
 }
 
