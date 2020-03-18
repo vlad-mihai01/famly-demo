@@ -2889,7 +2889,7 @@ html {
   height: calc(100vh - 76px);
   animation: appear 1s ease;
   justify-content: space-between;
-  padding: 32px 60px 16px 60px;
+  padding: 32px 16px 16px 32px;
   align-items: center; }
   .container-sign-in .container-details {
     display: inline-flex;
@@ -2900,8 +2900,8 @@ html {
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      margin-right: 60px;
-      margin-left: 32px; }
+      margin-right: 40px;
+      margin-left: 16px; }
       .container-sign-in .container-details .child-info img {
         background: linear-gradient(90deg, rgba(71, 74, 129, 0.1), rgba(71, 74, 129, 0.4), rgba(71, 74, 129, 0.1));
         background-size: 250% 250%;
@@ -2928,6 +2928,7 @@ html {
         font-weight: 700;
         color: #31346C;
         margin-bottom: 32px;
+        margin-left: 16px;
         line-height: initial; }
   .container-sign-in .container-actions {
     display: inline-flex;

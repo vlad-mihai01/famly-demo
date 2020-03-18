@@ -29,7 +29,7 @@ class SignIn extends Component<TProps, IState> {
         const { reducerCurrentChild, history } = this.props
         const { name, image } = reducerCurrentChild
 
-        const pickUpHours = [9, 10, 11, 17, 18, 19, 20, 21]
+        const pickUpHours = [9, 10, 11, 17, 18, 19, 20, 21, 22, 23]
         const pickUpMinutes = [0, 15, 30, 45]
 
         return (

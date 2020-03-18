@@ -2,7 +2,7 @@
   @include body-container();
   @include page-content-appear(1s);
   justify-content: space-between;
-  padding: 32px 60px 16px 60px;
+  padding: 32px 16px 16px 32px;
   align-items: center;
 
   .container-details {
@@ -15,8 +15,8 @@
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      margin-right: 60px;
-      margin-left: 32px;
+      margin-right: 40px;
+      margin-left: 16px;
   
       img {
         @include img-circle(152px, 152px);
@@ -39,6 +39,7 @@
           @include header(700);
           color: $primaryDark;
           margin-bottom: 32px;
+          margin-left: 16px;
           line-height: initial;
         }
     }
