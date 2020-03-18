@@ -53,7 +53,7 @@ class Receipt extends Component<TProps>{
         const {history} = this.props
         const listSignIn = location.pathname.includes('/signin') ? true : false
         if(listSignIn){
-            setTimeout(()=>history.replace('/signin'),4000) 
+            setTimeout(()=>history.replace('/signin'),5000) 
         } else {
             setTimeout(()=>history.replace('/signout'),2000)
             

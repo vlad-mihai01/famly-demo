@@ -6,14 +6,9 @@ import TimePicker from '../../components/TimePicker'
 import { postCheckinChild } from '../../api';
 
 
-type amPm = 'am' | 'pm' | ''
 
 interface IState {
-    pickUpHour: number | any
-    pickUpMinutes: number | string
-    pickUpAmPm: amPm
-    hoursArray: any
-    minutesArray: any
+    pickUpTime: any
 }
 
 interface IReducerProps {
@@ -26,11 +21,7 @@ class SignIn extends Component<TProps, IState> {
         super(props)
 
         this.state = {
-            pickUpHour: '',
-            pickUpMinutes: '',
-            pickUpAmPm: '',
-            hoursArray: [],
-            minutesArray: []
+            pickUpTime: undefined
         }
     }
 
@@ -38,8 +29,8 @@ class SignIn extends Component<TProps, IState> {
         const { reducerCurrentChild, history } = this.props
         const { name, image } = reducerCurrentChild
 
-        const pickUpHours = [10,11,12,13,14,15,16,17]
-        const pickUpMinutes = [0,15,30,45]
+        const pickUpHours = [9, 10, 11, 17, 18, 19, 20, 21]
+        const pickUpMinutes = [0, 15, 30, 45]
 
         return (
             <div className='container-sign-in'>
@@ -53,15 +44,11 @@ class SignIn extends Component<TProps, IState> {
                         <p>Choose pick up time</p>
 
                         <TimePicker
-                            initialTime={
-                                {
-                                    hour: 15,
-                                    minutes: 25
-                                }
-                            }
                             mode12={true}
+                            initialTimeArray={true}
                             hoursArray={pickUpHours}
                             minutesArray={pickUpMinutes}
+                            returnTimeFunction={this.setPickUpTime}
                         />
 
                     </div>
@@ -74,17 +61,23 @@ class SignIn extends Component<TProps, IState> {
         )
     }
 
+    private setPickUpTime = (time: any) => {
+        this.setState({ pickUpTime: time })
+    }
+
 
     private signInChild = async () => {
-        const { pickUpHour, pickUpMinutes } = this.state
+        const { pickUpTime } = this.state
+        const { hour, minutes, amPm } = pickUpTime
         const { childId } = this.props.reducerCurrentChild
-        const pickUpTime = `${pickUpHour}:${pickUpMinutes}`
 
-        const res = await postCheckinChild(childId, pickUpTime).catch(err => { console.error(err); })
+        const apiPickUpTime = `${hour.value}:${minutes.value}`
+        const stringPickUpTime = `${hour.text}:${minutes.text} ${amPm?amPm:''}`
+
+        const res = await postCheckinChild(childId, apiPickUpTime).catch(err => { console.error(err); })
         if (res && res.data) {
-            this.props.history.replace(`/signin/receipt/${pickUpTime}`);
+            this.props.history.replace(`/signin/receipt/${stringPickUpTime}`);
         }
-
     }
 }
 

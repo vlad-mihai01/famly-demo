@@ -37,12 +37,25 @@
             display: none;
         }
 
-        p{
-            @include caption(700);
-            margin-bottom: 4px;
-            color: $primaryDark;
-            text-transform: uppercase;
+        .picker{
+            p{
+                @include caption(700);
+                margin-left: 16px;
+                margin-bottom: 4px;
+                color: $primaryDark;
+                text-transform: uppercase;
+            }
+
+            div.values{
+                border-left: 2px solid rgba($primaryDark,0.2);
+            }
+
+            &:first-of-type div.values{
+                border-left: none;
+            }
         }
+
+       
 
         button{
             @include button(60px,60px);
