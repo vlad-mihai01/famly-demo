@@ -10,7 +10,6 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: 'js/[name].bundle.js',
-        publicPath: '/'
     },
     devtool: 'source-map',
     resolve: {

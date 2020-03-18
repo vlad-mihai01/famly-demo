@@ -17,7 +17,7 @@ ReactDOM.render(
     <Provider store={createStore(createRootReducer(browserHistory), composeWithDevTools(applyMiddleware(
         routerMiddleware(browserHistory), 
       ),))}>
-        <Router >
+        <Router>
             <ConnectedRouter history={browserHistory}>
                 <App />
             </ConnectedRouter>
