@@ -9,6 +9,7 @@
         flex-direction: column;
         width: 100%;
         align-items: center;
+        margin-top: 2vh;
     
         img {
             @include img-circle(180px, 180px);
