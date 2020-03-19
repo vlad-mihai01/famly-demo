@@ -31,14 +31,17 @@
 ## UX
     - The app has to main pages `Sign in` and `Sign out`.
         This was chosen first in order to have a clear separation of the action performed. 
-        And second while kids sign in the don't appear on the page anymore so it is easier for the parents to find their kid.
+        And second while kids sign in the don't appear on the page anymore so it is easier 
+        for the parents to find their kid.
     
 
 ## UI
     - The UI is based on flat design style. 
-    - The animations between steps are meant to convey a soft transition between pages and steps and focus the attention of the user.
+    - The animations between steps are meant to convey a soft transition between pages and 
+    steps and focus the attention of the user.
     > I like to think of them as a storytelling of the task
-    - In order for a better separation and ease of use of the app each task (Sign in & Sign out) has its own colour theme
+    - In order for a better separation and ease of use of the app each task (Sign in & Sign out) 
+    has its own colour theme
     - The typography and colours have been checked for proper contrast ratio and colour blind usability
 
 ### Pallet 
