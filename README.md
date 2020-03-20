@@ -1,5 +1,7 @@
 #Demo Famly
 
+Demo :  http://vlad-mihai.com/demo/famly
+
 ## Dependencies 
 
 - Swiper
