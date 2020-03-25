@@ -1,5 +1,8 @@
 import { createBrowserHistory } from 'history'
 
-const browserHistory = createBrowserHistory({basename:'/demo/famly'})
+const basename = process.env.NODE_ENV  === 'development' ? '/': '/demo/famly'
+
+
+const browserHistory = createBrowserHistory({basename})
 
 export default browserHistory
