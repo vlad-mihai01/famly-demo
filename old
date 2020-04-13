@@ -1,0 +1,37 @@
+    //"build:css": "node-sass src/style.scss -o src/public ",
+
+
+// {
+//     "compilerOptions": {
+//       "outDir": "./public",
+//       "module": "esnext",
+//       "target": "es5",
+//       "lib": ["es6", "dom", "es2015.promise", "es2017"],
+//       "sourceMap": true,
+//       "jsx": "react",
+//       "moduleResolution": "node",
+//       "rootDir": "src",
+//       "forceConsistentCasingInFileNames": true,
+//       "noImplicitReturns": true,
+//       "suppressImplicitAnyIndexErrors": true,
+//       "noUnusedLocals": true,
+//       "strict": true,
+//       "noFallthroughCasesInSwitch": true,
+//       // "noUnusedParameters": true,
+//       "noEmitOnError": true,
+//       "removeComments": true,
+//       "skipLibCheck": true,
+//       "experimentalDecorators": true,
+//       "allowSyntheticDefaultImports": true,
+//       "baseUrl": "./src",
+//       "types": ["node"],
+//       "paths": {
+//         "Components": ["./src/components/*"],
+//     },
+//     "typeRoots": ["./src/types"],
+//     },
+//     "exclude": [
+//       "node_modules",
+//       "webpack",
+//     ]
+//   }
