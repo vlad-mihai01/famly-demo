@@ -62,7 +62,7 @@ class List extends Component<TProps, IState> {
         if (!sortedChildren.length) {
             return (
                 <div className='container-list'>
-                    <div className={`list-empty ${theme}`}>Every one is in school</div>
+                    <div className={`list-empty ${theme}`}>{listSignIn?`Every one is in school`:`Every one is at home`}</div>
                 </div>
             )
         }
