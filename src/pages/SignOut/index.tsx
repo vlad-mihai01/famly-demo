@@ -4,6 +4,7 @@ import { RouteComponentProps } from 'react-router';
 
 
 import { postCheckoutChild } from '../../api';
+import { routeReceiptSignOut } from 'Routes';
 
 interface IReducerProps {
     reducerCurrentChild: any
@@ -35,7 +36,7 @@ class SignOut extends Component<TProps> {
         const { childId } = this.props.reducerCurrentChild
         const res = await postCheckoutChild(childId).catch(err => { console.error(err); })
         if(res && res.data){ 
-            this.props.history.replace('/signout/receipt');
+            this.props.history.replace(routeReceiptSignOut);
         }
     }
 

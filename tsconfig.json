@@ -15,10 +15,18 @@
 		// Import non-ES modules as default imports.
 		"esModuleInterop": true,
 		"jsx": "react",
+		"baseUrl": ".",
+		"paths": {
+			"Routes": [
+				"src/routes.ts"
+			]
+		}
 	},
 	"include": [
 		"src"
+	],
+	"exclude": [
+		"node_modules",
+		"webpack",
 	]
 }
-
-  

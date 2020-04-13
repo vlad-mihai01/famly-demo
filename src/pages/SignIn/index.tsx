@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router';
+import { RouteComponentProps, Redirect } from 'react-router';
 
 import TimePicker from '../../components/TimePicker'
 import { postCheckinChild } from '../../api';
 
+import {routeReceiptSignIn, routeListSignIn} from 'Routes'
 
 
 interface IState {
@@ -26,6 +27,10 @@ class SignIn extends Component<TProps, IState> {
     }
 
     render() {
+        if (!this.props.reducerCurrentChild) {
+            return  <Redirect to={routeListSignIn} />
+        }
+
         const { reducerCurrentChild, history } = this.props
         const { name, image } = reducerCurrentChild
 
@@ -76,7 +81,7 @@ class SignIn extends Component<TProps, IState> {
 
         const res = await postCheckinChild(childId, apiPickUpTime).catch(err => { console.error(err); })
         if (res && res.data) {
-            this.props.history.replace(`/signin/receipt/${stringPickUpTime}`);
+            this.props.history.replace(routeReceiptSignIn(stringPickUpTime));
         }
     }
 }

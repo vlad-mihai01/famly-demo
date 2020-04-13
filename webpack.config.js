@@ -17,6 +17,8 @@ return {
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.scss', '.css'],
         alias: {
+            'react-dom': '@hot-loader/react-dom',
+            'Routes': path.resolve(__dirname, 'src/routes.ts'),
             'Components': path.resolve(__dirname, 'src/components/'),
         },
     },

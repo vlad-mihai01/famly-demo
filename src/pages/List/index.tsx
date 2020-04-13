@@ -8,6 +8,8 @@ import Loading from '../../components/Loading'
 
 import { getChildren } from '../../api';
 import { updateCurrentChild } from '../../actions'
+import { routeListSignIn } from 'Routes';
+import { TTheme } from '../../types/theme';
 
 interface IState {
     sortedChildren?: any
@@ -19,7 +21,7 @@ interface IActionProps {
 
 type TProps = RouteComponentProps & IActionProps
 
-class ListSignIn extends Component<TProps, IState> {
+class List extends Component<TProps, IState> {
 
     public state: IState = {
         sortedChildren: undefined,
@@ -30,13 +32,20 @@ class ListSignIn extends Component<TProps, IState> {
         this.getChildrenList()
     }
 
+    public componentDidUpdate(prevProps:TProps){
+        if (prevProps.match.path !== this.props.match.path) {
+            this.setState({sortedChildren:undefined})
+            this.getChildrenList()
+        }
+    }
 
-    public render() {
 
+    public render() {        
         const { sortedChildren } = this.state
         const { match, updateCurrentChild } = this.props
-
-        const theme = 'light'
+        const listSignIn = match.path.includes(routeListSignIn) ? true : false
+        
+        const theme: TTheme = listSignIn ? 'light' : 'dark'
         
 
 
@@ -53,7 +62,7 @@ class ListSignIn extends Component<TProps, IState> {
         if (!sortedChildren.length) {
             return (
                 <div className='container-list'>
-                    <div className='list-empty light'>Every one is in school</div>
+                    <div className={`list-empty ${theme}`}>Every one is in school</div>
                 </div>
             )
         }
@@ -77,9 +86,12 @@ class ListSignIn extends Component<TProps, IState> {
     }
 
     private sortChildren = (children: []) => {
+        const listSignIn = this.props.match.path.includes(routeListSignIn) ? true : false
         const sortedChildren: any = []
         children.map((child: any) => {
-            if (!child.checkedIn) {
+            if (listSignIn && !child.checkedIn) {
+                sortedChildren.push(child)
+            } else if (!listSignIn && child.checkedIn){
                 sortedChildren.push(child)
             }
         })
@@ -94,4 +106,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     updateCurrentChild: (payload: any) => dispatch(updateCurrentChild(payload))
 })
 
-export default connect(null, mapDispatchToProps)(ListSignIn)
+export default connect(null, mapDispatchToProps)(List)

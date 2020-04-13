@@ -11,7 +11,7 @@ import browserHistory from './utils/history'
 
 import './style.scss'
 import createRootReducer from './reducers'
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 ReactDOM.render(
     <Provider store={createStore(createRootReducer(browserHistory), composeWithDevTools(applyMiddleware(

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import Octicon, { Check } from '@primer/octicons-react'
-
+import {routeListSignIn, routeListSignOut} from 'Routes'
 interface IReducerProps {
     reducerCurrentChild: any
 }
@@ -19,7 +19,7 @@ class Receipt extends Component<TProps>{
         const { reducerCurrentChild, match } = this.props
         const { name, image } = reducerCurrentChild
 
-        const listSignIn = location.pathname.includes('/signin') ? true : false
+        const listSignIn = location.pathname.includes(routeListSignIn) ? true : false
         const theme = listSignIn ? 'light' : 'dark'
 
         return (
@@ -51,11 +51,11 @@ class Receipt extends Component<TProps>{
 
     private redirectToHome = () => {
         const {history} = this.props
-        const listSignIn = location.pathname.includes('/signin') ? true : false
+        const listSignIn = location.pathname.includes(routeListSignIn) ? true : false
         if(listSignIn){
-            setTimeout(()=>history.replace('/signin'),4500) 
+            setTimeout(()=>history.replace(routeListSignIn),2000) 
         } else {
-            setTimeout(()=>history.replace('/signout'),2000)
+            setTimeout(()=>history.replace(routeListSignOut),2000)
             
         }
     }

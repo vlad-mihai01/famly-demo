@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from "react-router";
-
+import {routeListSignIn} from 'Routes'
 type TProps = RouteComponentProps
 
 const Background: React.FunctionComponent<TProps>= ({location}) => {
 
-    const bgSignIn = location.pathname.includes('/signin') ? true : false
+    const bgSignIn = location.pathname.includes(routeListSignIn) ? true : false
 
     return (
         <div className={`background ${bgSignIn?'sIn':'sOut'}`}>
